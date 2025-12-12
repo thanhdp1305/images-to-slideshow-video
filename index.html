@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>🎬 Tạo Slideshow với FFmpeg WASM</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* Tùy chỉnh nhỏ để căn giữa nội dung */
+      .container {
+        max-width: 600px; /* Giới hạn chiều rộng cho dễ nhìn */
+      }
+      #videoPreview {
+        width: 100%; /* Video chiếm toàn bộ chiều rộng container */
+        max-height: 80vh; /* Giới hạn chiều cao tối đa */
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container py-5">
+      <header class="text-center mb-4">
+        <h1 class="display-6 text-primary">🎬 Tạo Slideshow từ Ảnh</h1>
+        <p class="lead">Sử dụng FFmpeg WebAssembly để ghép ảnh thành video.</p>
+      </header>
+
+      <main class="card shadow-lg p-4">
+        <div class="mb-4">
+          <label
+            for="imageInput"
+            class="form-label fw-bold"
+            >Chọn các tệp ảnh (Chọn nhiều ảnh):</label
+          >
+          <input
+            id="imageInput"
+            type="file"
+            multiple
+            accept="image/*"
+            class="form-control"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="audioInput"
+            class="form-label fw-bold"
+            >Chọn tệp âm thanh (Tùy chọn):</label
+          >
+          <input
+            type="file"
+            id="audioInput"
+            accept="audio/*"
+            class="form-control"
+          />
+        </div>
+
+        <div class="d-grid gap-2 mb-4">
+          <button
+            id="btnCreate"
+            class="btn btn-primary btn-lg"
+          >
+            <i class="fas fa-magic"></i> Tạo Video Slideshow
+          </button>
+        </div>
+
+        <div
+          id="loading"
+          class="text-center text-info mb-4"
+          style="display: none"
+        >
+          <div
+            class="spinner-border text-info"
+            role="status"
+          >
+            <span class="visually-hidden">Đang xử lý...</span>
+          </div>
+          <p class="mt-2">Đang xử lý... Vui lòng chờ vài phút (có thể lâu tùy số lượng ảnh).</p>
+        </div>
+
+        <div class="text-center mb-4">
+          <video
+            id="videoPreview"
+            controls
+            class="rounded border bg-dark"
+          ></video>
+        </div>
+
+        <div class="d-grid gap-2">
+          <button
+            id="btnDownload"
+            class="btn btn-success btn-lg"
+            style="display: none"
+          >
+            <i class="fas fa-download"></i> Tải Video Về
+          </button>
+        </div>
+      </main>
+
+      <footer class="text-center text-muted mt-4">
+        <small>Công nghệ: FFmpeg WASM | Tối ưu cho màn hình đứng (1080x1920).</small>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/your-font-awesome-kit.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="/src/main.js"
+    ></script>
+  </body>
+</html>
