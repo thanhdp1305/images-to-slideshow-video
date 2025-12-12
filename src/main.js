@@ -1,5 +1,8 @@
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import coreURL from "@ffmpeg/core?url";
+
+import wasmURL from "@ffmpeg/core?url";
+import workerURL from "@ffmpeg/core?url";
 import { fetchFile } from "@ffmpeg/util";
 
 // --- DOM Elements ---
@@ -44,9 +47,11 @@ btn.addEventListener("click", async () => {
   const finalVideoFile = "output.mp4";
   const audioFileName = "input_audio.mp4"; // Tên file audio trong VFS
 
+  console.log({ coreURL, wasmURL, workerURL });
+
   try {
     // 2. Tải core FFmpeg
-    await ffmpeg.load({ coreURL });
+    await ffmpeg.load();
 
     // 3. Ghi ảnh vào hệ thống file ảo (VFS) và tạo list.txt
     let listContent = "";
