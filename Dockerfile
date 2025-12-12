@@ -9,7 +9,7 @@ RUN rm -rf /usr/share/nginx/html/*
 # STEP 3: Sao chép file đã build
 # COPY <nguồn_trên_host> <đích_trong_container>
 # Sao chép toàn bộ nội dung của thư mục 'dist' (đã build) vào thư mục phục vụ của Nginx
-COPY dist /usr/share/nginx/html
+COPY docs /usr/share/nginx/html
 
 # STEP 4: Mở cổng (Expose)
 # Khai báo rằng container này lắng nghe trên cổng 80. 
